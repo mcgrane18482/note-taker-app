@@ -1,10 +1,17 @@
 [
     {
-        "title": "note 4",
-        "text": "note 4 text"
+        "title": "Note 1",
+        "text": "note 1 message",
+        "id": "25b4b0ee-0a49-4ffa-85d3-a2740afcb87d"
     },
     {
-        "title": "note 6",
-        "text": "note 6 text"
+        "title": "Note 2",
+        "text": "note 2 message",
+        "id": "8f3e7353-70bc-4636-b6f2-45e06a31ddb2"
+    },
+    {
+        "title": "Note 3",
+        "text": "note 3 text",
+        "id": "faf4cc4b-1cab-4489-8e81-8a5d5ecdcc63"
     }
 ]

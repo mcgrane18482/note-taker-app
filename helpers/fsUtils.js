@@ -2,6 +2,7 @@ const fs = require('fs');
 const util = require('util');
 const path = require('path');
 const DB_PATH = path.join(__dirname, '../db/db.json')
+
 // Promise version of fs.readFile
 const readFromFile = util.promisify(fs.readFile);
 

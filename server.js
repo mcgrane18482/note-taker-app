@@ -1,8 +1,9 @@
 const express = require('express');
 const path = require('path');
-const app = express();
+const { v4 } = require('uuid');
 const {readFromFile, readAndAppend}=require('./helpers/fsUtils')
 
+const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
@@ -14,12 +15,13 @@ app.get('/api/notes', (req, res)=>{
 });
 
 app.post('/api/notes', (req, res)=>{
-    const content = {
+    const newNote = {
         title: req.body.title,
-        text: req.body.text
+        text: req.body.text,
+        id: v4()
     };
     console.log(req.body);
-    readAndAppend(content);
+    readAndAppend(newNote);
     res.send('note saved successfully');
 });
 
