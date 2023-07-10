@@ -1,25 +1,35 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const {readFromFile}=require('./helpers/fsUtils')
+const {readFromFile, readAndAppend}=require('./helpers/fsUtils')
 
 const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
-app.use(express.urlencoded());
 app.use(express.static('public'));
 
-// retrieves the data from db
+// API ROUTES
 app.get('/api/notes', (req, res)=>{
     readFromFile('db/db.json').then((data)=> res.json(JSON.parse(data)));
 });
 
-// displays the index.html file
+app.post('/api/notes', (req, res)=>{
+    const content = {
+        title: req.body.title,
+        text: req.body.text
+    };
+    console.log(req.body);
+    readAndAppend(content);
+    res.send('note saved successfully');
+});
+
+// HTML ROUTES
+// displays the index.html file in browser
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/index.html'));
 });
 
-// displays the notes.html file
+// displays the notes.html file in browswer
 app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/notes.html'));
 });
